@@ -1,4 +1,5 @@
 import { MOVIE_API_URL } from '@/app/constants';
+import styles from '../../styles/movie-video.module.css';
 
 async function getVideos(id: string) {
   const response = await fetch(`${MOVIE_API_URL}/${id}/videos`);
@@ -9,7 +10,7 @@ async function getVideos(id: string) {
 export default async function MovieVideo({ id }: { id: string }) {
   const videos = await getVideos(id);
   return (
-    <div>
+    <div className={styles.container}>
       {videos.slice(0, 3).map((video) => (
         <iframe
           key={video.id}
